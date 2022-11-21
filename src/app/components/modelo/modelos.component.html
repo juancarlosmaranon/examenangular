@@ -1,0 +1,10 @@
+<div>
+    <div class="card" style="width: 18rem; float: left; margin: 20px;" *ngFor="let cubo of cubos" (click)="detalles(cubo.idCubo)">
+        <h1>Cubos de la marca</h1><h1 style="color: blue;">{{cubo.marca}}</h1>
+        <img src="{{cubo.imagen}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{cubo.nombre}}</h5>
+          <p class="card-text">{{cubo.precio}}</p>
+        </div>
+    </div>
+</div>

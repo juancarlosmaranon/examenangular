@@ -1,0 +1,14 @@
+<div>
+    
+    <div style="background-color: skyblue;">
+        <h1>Cubos</h1>
+        <p>Bienvenidos</p>
+    </div>
+    <div class="card" style="width: 15rem; float: left; margin: 20px;" *ngFor="let cubo of cubos">
+        <img src="{{cubo.imagen}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{cubo.nombre}}</h5>
+          <p class="card-text">{{cubo.precio}}</p>
+        </div>
+    </div>
+</div>
