@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Compra } from 'src/app/models/compra';
 
 
 @Component({
@@ -9,7 +8,6 @@ import { Compra } from 'src/app/models/compra';
 })
 export class ComprasComponent implements OnInit {
 
-  public compras!:Array<Compra>;
 
   constructor() { }
 
