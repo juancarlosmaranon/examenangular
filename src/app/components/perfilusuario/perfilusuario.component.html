@@ -1,0 +1,6 @@
+<div *ngIf="user">
+    <h1>Mi perfil</h1>
+    <h2>Nombre: {{user.nombre}}</h2>
+    <h3>Email: {{user.email}}</h3>
+    <button [routerLink]="['/compras',user.idUsuario]">Compras</button>
+</div>

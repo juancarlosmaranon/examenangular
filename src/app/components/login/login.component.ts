@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { CuboService } from 'src/app/services/cubo.service';
 import { environment } from 'src/environments/environment';
@@ -13,28 +13,33 @@ export class LoginComponent implements OnInit {
 
   public usuario!: Array<Usuario>;
 
+  @ViewChild("cajaemail") cajaemail!: ElementRef;
+  @ViewChild("cajacontra") cajacontra!: ElementRef;
+
   constructor(
     private _service: CuboService,
-    private _activeRoutes:ActivatedRoute
+    private _activeRoutes:ActivatedRoute,
+    private _router: Router
   ) { }
 
   realizarLogin(): void {
-    console.log(environment.email)
+    var email = this.cajaemail.nativeElement.value;
+    var contra = this.cajacontra.nativeElement.value;
 
-    if (environment.token == null){
-      this._service.sacarLogin(environment.email,environment.password).subscribe(res => {
-        console.log(res);
-        environment.token = res.response;
-        // console.log(environment.token)
-        // this._service.getEmpleados().subscribe(response => {
-        //   this.usuario = response;
-        //   console.log("Dentro Check")
-        //   console.log(this.usuario)
-    
-        // })
+    this._service.sacarLogin(email,contra).subscribe(res => {
+      
+      environment.token = res.response;
+      console.log(res.response);
+      this._router.navigate(['/perfil']);
+      // console.log(environment.token)
+      // this._service.getEmpleados().subscribe(response => {
+      //   this.usuario = response;
+      //   console.log("Dentro Check")
+      //   console.log(this.usuario)
+  
+      // })
 
-    });
-    }    
+    })  
   }
 
   ngOnInit(): void {

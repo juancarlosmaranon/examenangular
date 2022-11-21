@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import { LoginModel } from "../models/loginmodel";
 
 
 @Injectable()
@@ -19,10 +20,11 @@ export class CuboService{
     }
 
     sacarLogin(email: string,password: string): Observable<any> {
-        var request = "/Auth/Login"
+        var request = "/api/manage/login"
         var url = environment.urlApiCubos + request;
         var header = new HttpHeaders().set("content-type","application/json");
-        var login = JSON.stringify({"email":email,"password":password});
+        var loginmodel = new LoginModel(email, password);
+        var login = JSON.stringify(loginmodel);
         return this._http.post(url,login,{headers: header});
     }
 
@@ -49,4 +51,18 @@ export class CuboService{
         var url = environment.urlApiCubos + request;
         return this._http.get(url);
     }
+
+    getPerfilUsuario():Observable<any>{
+        var request = '/api/manage/perfilusuario';
+        var url = environment.urlApiCubos + request;
+        var header = new HttpHeaders().set("Authorization","Bearer "+environment.token);
+        return this._http.get(url, {headers: header})
+    }
+
+    getComprasUsuario():Observable<any>{
+        var request = '/api/Compra/ComprasUsuario';
+        var url = environment.urlApiCubos + request;
+        var header = new HttpHeaders().set("Authorization","Bearer "+environment.token);
+        return this._http.get(url, {headers: header})
+    }    
 }

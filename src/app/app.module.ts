@@ -11,6 +11,8 @@ import { ModelosComponent } from './components/modelo/modelos.component';
 import { CuboComponent } from './components/cubo/cubo.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
+import { PerfilusuarioComponent } from './components/perfilusuario/perfilusuario.component';
+import { ComprasComponent } from './components/compras/compras.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
     CuboComponent,
     LoginComponent,
     RegistrarComponent,
+    PerfilusuarioComponent,
+    ComprasComponent,
   ],
   imports: [
     BrowserModule,
